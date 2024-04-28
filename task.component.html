@@ -1,0 +1,28 @@
+<div>
+  <h2>Ajouter une Tâche</h2>
+  <input [(ngModel)]="taskName" placeholder="Nom de la tâche" /> <br><br>
+  <textarea [(ngModel)]="taskContent" rows="5" placeholder="Contenu de la tâche"></textarea> <br><br>
+  <button (click)="addTask()">Ajouter</button>
+</div>
+
+<div>
+  <h2>Liste des Tâches</h2>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Contenu</th>
+      <th>Statut</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let task of tasks">
+      <td>{{ task.id }}</td>
+      <td>{{ task.name }}</td>
+      <td>{{ task.content }}</td>
+      <td>{{ task.status }}</td>
+      <td>
+        <button (click)="closeTask(task.id)" [disabled]="task.status === 'closed'">Clôturer</button>
+      </td>
+    </tr>
+  </table>
+</div>
